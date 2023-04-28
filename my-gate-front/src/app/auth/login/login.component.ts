@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthServiceService } from 'src/app/core/services/auth-service.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService : AuthServiceService){}
+    private authService : AuthService){}
 
    ngOnInit() : void {
     this.loginForm = this.formBuilder.group({
