@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/authService';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthServiceService } from 'src/app/core/services/auth-service.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,16 +9,49 @@ import { AuthService } from 'src/app/core/services/authService';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
-  LoginForm = this.formBuilder.group({
-    username : '',
-    password: ''
-  })
+  loginForm! : FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder){}
+    private formBuilder: FormBuilder,
+    private authService : AuthServiceService){}
 
-  OnSubmit() : void {
+   ngOnInit() : void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
 
+    })   
+  }
+
+  login(){
+     if(this.loginForm.valid){
+      const username = this.loginForm.value.username;
+      const password = this.loginForm.value.password;
+
+      this.authService.login(username, password)
+      .subscribe({
+        next: (Response: any) => {
+          console.log(Response);
+        },
+        error: (Error : any) => {
+          console.log(Error);
+        }
+      });
+  }
+     else{
+       this.validateAllFormFields(this.loginForm);
+     }
+  }
+
+  private validateAllFormFields(formGroup : FormGroup){
+    Object.keys(formGroup.controls).forEach(field=> {
+      const control = formGroup.get(field);
+      if(control instanceof FormControl){
+        control.markAsDirty({onlySelf:true});
+      }
+      else if( control instanceof FormGroup){
+        this.validateAllFormFields(control);
+      }
+    })
   }
 }
