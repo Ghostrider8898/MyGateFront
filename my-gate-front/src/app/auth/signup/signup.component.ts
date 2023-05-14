@@ -29,10 +29,13 @@ export class SignupComponent {
 
   signup() {
     if (this.signUpForm.valid) {
+      const firstName = this.signUpForm.value.firstName;
+      const lastName = this.signUpForm.value.lastName;
+      const email = this.signUpForm.value.email;
       const username = this.signUpForm.value.username;
       const password = this.signUpForm.value.password;
 
-      this.authService.login(username, password)
+      this.authService.signup(firstName, lastName, email, username, password)
         .subscribe({
           next: (Response: any) => {
             console.log(Response);
