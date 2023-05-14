@@ -10,11 +10,19 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(username : string, password : string): Observable<any>{
+  login(username: string, password: string): Observable<any> {
     const request = new HttpParams()
-    .set('userName', username)
-    .set('password', password)
+      .set('userName', username)
+      .set('password', password)
     const url = envirnoment.BaseUrl + '/Auth/login';
     return this.httpClient.post<any>(url, request);
-}
+  }
+
+  signup(firstName: string,lastName: string,email: string,username: string, password: string): Observable<any> {
+    const request = new HttpParams()
+      .set('userName', username)
+      .set('password', password)
+    const url = envirnoment.BaseUrl + '/Auth/signup';
+    return this.httpClient.post<any>(url, request);
+  }
 }

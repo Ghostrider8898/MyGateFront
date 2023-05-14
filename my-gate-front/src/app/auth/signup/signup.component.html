@@ -1,1 +1,35 @@
-<p>signup works!</p>
+<div class="wrapper">
+    <div id="formContent">
+        <div class="text-center">
+            <img style="height: 100px;" src="../../../assets/Logo.JPG"/>
+        </div>
+        <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+            <div class="row m-2">
+                <input formControlName="firstName" type="text" placeholder="First Name"/>
+            </div>
+            <small *ngIf="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required', 'firstName')" class="text-danger">First Name is required</small>
+            <div class="row m-2">
+                <input formControlName="lastName" type="text" placeholder="Last Name"/>
+            </div>
+            <small *ngIf="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required', 'lastName')" class="text-danger">Last Name is required</small>
+            <div class="row m-2">
+                <input formControlName="email" type="text" placeholder="Email"/>
+            </div>
+            <small *ngIf="signUpForm.controls['email'].dirty && signUpForm.hasError('required', 'email')" class="text-danger">Email is required</small>
+            <div class="row m-2">
+                <input formControlName="username" type="text" placeholder="Username"/>
+            </div>
+            <small *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')" class="text-danger">Username is required</small>
+            <div class="row m-2">
+                <input formControlName="password" type="password" placeholder="Password"/>
+            </div>
+            <small *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required', 'password')" class="text-danger">Password is required</small>
+            <div class="row m-2">
+                <input type="submit" class="btn btn-primary"  value="SignUp"/>
+            </div>
+            <div class="row m-2 ">
+                <button routerLink="login">Login</button>
+            </div>
+        </form>
+    </div>
+    </div>

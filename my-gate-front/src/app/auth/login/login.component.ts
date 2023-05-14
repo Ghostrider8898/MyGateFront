@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -34,7 +35,7 @@ export class LoginComponent {
           console.log(Response);
         },
         error: (Error : any) => {
-          console.log(Error);
+          console.log(HttpErrorResponse);
         }
       });
   }
