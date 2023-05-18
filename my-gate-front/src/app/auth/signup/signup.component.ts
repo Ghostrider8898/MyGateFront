@@ -35,7 +35,7 @@ export class SignupComponent {
       const username = this.signUpForm.value.username;
       const password = this.signUpForm.value.password;
 
-      this.authService.signup(firstName, lastName, email, username, password)
+      this.authService.signup(this.signUpForm.value)
         .subscribe({
           next: (Response: any) => {
             console.log(Response);

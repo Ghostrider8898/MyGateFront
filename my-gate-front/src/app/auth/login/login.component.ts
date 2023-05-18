@@ -29,7 +29,7 @@ export class LoginComponent {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
 
-      this.authService.login(username, password)
+      this.authService.login(this.loginForm.value)
       .subscribe({
         next: (Response: any) => {
           console.log(Response);
