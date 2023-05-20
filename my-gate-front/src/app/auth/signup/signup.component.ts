@@ -1,6 +1,8 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -13,8 +15,13 @@ export class SignupComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private _dialog : MatDialog
   ) { }
+
+  CloseSignUoDialog() {
+      this._dialog.closeAll();
+  }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -22,19 +29,14 @@ export class SignupComponent {
       lastName: ['', Validators.required],
       email: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', Validators.required]
-
+      password: ['', Validators.required],
+      phoneNumber : ['', Validators.required],
+      dateOfBirth : ['', Validators.required]
     })
   }
 
   signup() {
     if (this.signUpForm.valid) {
-      const firstName = this.signUpForm.value.firstName;
-      const lastName = this.signUpForm.value.lastName;
-      const email = this.signUpForm.value.email;
-      const username = this.signUpForm.value.username;
-      const password = this.signUpForm.value.password;
-
       this.authService.signup(this.signUpForm.value)
         .subscribe({
           next: (Response: any) => {

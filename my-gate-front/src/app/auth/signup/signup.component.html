@@ -1,35 +1,93 @@
-<div class="wrapper">
+<div mat-dialog-title>SignUp</div>
+<div mat-dialog-content>
+  <div class="wrapper">
     <div id="formContent">
-        <div class="text-center">
-            <img style="height: 100px;" src="../../../assets/Logo.JPG"/>
+      <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+        <div class="row m-2">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input type="email" matInput formControlName="firstName" placeholder="Ex. John">
+              <mat-error *ngIf="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required', 'firstName')">
+                LastName is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input type="email" matInput formControlName="lastName" placeholder="Ex. Eaton">
+              <mat-error *ngIf="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required', 'lastName')">
+                LastName is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-        <form [formGroup]="signUpForm" (ngSubmit)="signup()">
-            <div class="row m-2">
-                <input formControlName="firstName" type="text" placeholder="First Name"/>
-            </div>
-            <small *ngIf="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required', 'firstName')" class="text-danger">First Name is required</small>
-            <div class="row m-2">
-                <input formControlName="lastName" type="text" placeholder="Last Name"/>
-            </div>
-            <small *ngIf="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required', 'lastName')" class="text-danger">Last Name is required</small>
-            <div class="row m-2">
-                <input formControlName="email" type="text" placeholder="Email"/>
-            </div>
-            <small *ngIf="signUpForm.controls['email'].dirty && signUpForm.hasError('required', 'email')" class="text-danger">Email is required</small>
-            <div class="row m-2">
-                <input formControlName="username" type="text" placeholder="Username"/>
-            </div>
-            <small *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')" class="text-danger">Username is required</small>
-            <div class="row m-2">
-                <input formControlName="password" type="password" placeholder="Password"/>
-            </div>
-            <small *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required', 'password')" class="text-danger">Password is required</small>
-            <div class="row m-2">
-                <input type="submit" class="btn btn-primary"  value="SignUp"/>
-            </div>
-            <div class="row m-2 ">
-                <button routerLink="login">Login</button>
-            </div>
-        </form>
+        <div class="row m-2">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="Ex. john@example.com">
+              <mat-error *ngIf="signUpForm.controls['email'].dirty && signUpForm.hasError('required', 'email')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input type="email" matInput formControlName="phoneNumber" placeholder="Ex. 8293029312">
+              <mat-error
+                *ngIf="signUpForm.controls['phoneNumber'].dirty && signUpForm.hasError('required', 'phoneNumber')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row m-2">
+          <div class="col-6">
+            <mat-radio-group aria-label="Gender">
+              <mat-label>Gender</mat-label>
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Ex. 08/08/1998">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row m-2">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input type="text" matInput formControlName="username" placeholder="Ex. john123">
+              <mat-error *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')">
+                Username is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password">
+              <mat-error *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required', 'password')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row m-2">
+          <input type="submit" class="btn btn-primary" value="SignUp" />
+        </div>
+        <div class="row m-2 ">
+          <button mat-raised-button (click)="CloseSignUoDialog()" class="btn btn-danger">Cancel</button>
+        </div>
+      </form>
     </div>
-    </div>
+  </div>
+</div>

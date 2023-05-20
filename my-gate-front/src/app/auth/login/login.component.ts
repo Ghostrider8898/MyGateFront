@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { SignupComponent } from '../signup/signup.component';
 
 
 @Component({
@@ -14,7 +16,12 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService : AuthService){}
+    private authService : AuthService,
+    private _dialog : MatDialog){}
+
+    CloseLoginDialog(){
+      this._dialog.closeAll();
+    }
 
    ngOnInit() : void {
     this.loginForm = this.formBuilder.group({
@@ -26,9 +33,6 @@ export class LoginComponent {
 
   login(){
      if(this.loginForm.valid){
-      const username = this.loginForm.value.username;
-      const password = this.loginForm.value.password;
-
       this.authService.login(this.loginForm.value)
       .subscribe({
         next: (Response: any) => {
