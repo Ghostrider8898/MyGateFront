@@ -30,8 +30,9 @@ export class SignupComponent {
       email: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required],
-      phoneNumber : ['', Validators.required],
-      dateOfBirth : ['', Validators.required]
+      phoneNumber : ['',[Validators.required, Validators.maxLength(10)]],
+      dateOfBirth : ['', Validators.required],
+      ardharCard : ['', [Validators.required, Validators.maxLength(10)]]
     })
   }
 

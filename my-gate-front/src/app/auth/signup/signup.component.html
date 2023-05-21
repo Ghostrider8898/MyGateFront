@@ -7,16 +7,16 @@
           <div class="col-6">
             <mat-form-field appearance="outline">
               <mat-label>First Name</mat-label>
-              <input type="email" matInput formControlName="firstName" placeholder="Ex. John">
+              <input type="text" matInput formControlName="firstName" placeholder="Ex. John">
               <mat-error *ngIf="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required', 'firstName')">
-                LastName is <strong>required</strong>
+                First Name is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col-6">
             <mat-form-field appearance="outline">
               <mat-label>Last Name</mat-label>
-              <input type="email" matInput formControlName="lastName" placeholder="Ex. Eaton">
+              <input type="text" matInput formControlName="lastName" placeholder="Ex. Eaton">
               <mat-error *ngIf="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required', 'lastName')">
                 LastName is <strong>required</strong>
               </mat-error>
@@ -36,7 +36,7 @@
           <div class="col-6">
             <mat-form-field appearance="outline">
               <mat-label>Phone Number</mat-label>
-              <input type="email" matInput formControlName="phoneNumber" placeholder="Ex. 8293029312">
+              <input type="number" matInput formControlName="phoneNumber" placeholder="Ex. 8293029312">
               <mat-error
                 *ngIf="signUpForm.controls['phoneNumber'].dirty && signUpForm.hasError('required', 'phoneNumber')">
                 Email is <strong>required</strong>
@@ -45,12 +45,24 @@
           </div>
         </div>
         <div class="row m-2">
-          <div class="col-6">
+          <div class="col-12">
             <mat-radio-group aria-label="Gender">
               <mat-label>Gender</mat-label>
               <mat-radio-button value="male">Male</mat-radio-button>
               <mat-radio-button value="female">Female</mat-radio-button>
+              <mat-radio-button value="others">Others</mat-radio-button>
             </mat-radio-group>
+          </div>
+        </div>
+        <div class="row m-2">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Ardhar Card Number</mat-label>
+              <input type="number" matInput formControlName="ardharCard" placeholder="Ex. 0000000000000">
+              <mat-error *ngIf="signUpForm.controls['ardharCard'].dirty && signUpForm.hasError('required', 'ardharCard')">
+                Ardhar Card Number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
           </div>
           <div class="col-6">
             <mat-form-field appearance="outline">
@@ -58,6 +70,9 @@
               <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Ex. 08/08/1998">
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="signUpForm.controls['dateOfBirth'].dirty && signUpForm.hasError('required', 'dateOfBirth')">
+                Date of Birth is <strong>required</strong>
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
