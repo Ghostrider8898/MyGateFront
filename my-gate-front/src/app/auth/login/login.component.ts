@@ -22,7 +22,12 @@ export class LoginComponent {
     CloseLoginDialog(){
       this._dialog.closeAll();
     }
-
+    OpenSignUp(){
+      this._dialog.closeAll();
+      this._dialog.open(SignupComponent, {
+        height: '600px',
+      });
+    }
    ngOnInit() : void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
