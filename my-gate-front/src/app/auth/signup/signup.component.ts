@@ -12,6 +12,22 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class SignupComponent {
   signUpForm!: FormGroup;
+  isFlatOwner : boolean = false;
+  isStaff : boolean = false;
+  flatNumbersList : any = [
+      {
+        id : 'A-101',
+        value : 'A-101'
+      },
+      {
+        id : 'A-102',
+        value : 'A-102'
+      },
+      {
+        id : 'A-103',
+        value : 'A-103'
+      }
+  ]
 
   constructor(
     private formBuilder: FormBuilder,
@@ -64,4 +80,20 @@ export class SignupComponent {
       }
     })
   }
+
+  radioButtonChanged(value: any){
+    if(value === 'flatowner'){
+      this.isFlatOwner = true;
+      this.isStaff = false;
+    }
+    else if( value === 'staff'){
+      this.isStaff = true;
+      this.isFlatOwner = false;
+    }
+    else{
+      this.isFlatOwner = false;
+      this.isStaff = false;
+    }
+    console.log(" Value is : ", value );
+ }
 }

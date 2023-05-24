@@ -1,16 +1,15 @@
-<router-outlet>
-    <p>
-        <mat-toolbar>
-            <div>
-                <!-- <img style="height: 1000px; width: 1000px;" src="../../assets/Logo.JPG" /> -->
-                <span>My Gate</span>
+<p>
+    <mat-toolbar style="background-color:whitesmoke;">
+        <div>
+            <!-- <img style="height: 1000px; width: 1000px;" src="../../assets/Logo.JPG" /> -->
+            <span>My Gate</span>
+        </div>
+        <span class="example-spacer"></span>
+        <div class="row">
+            <div class="col-6">
+                <button mat-raised-button class="btn btn-primary" (click)="openLoginMenu()">Login</button>
             </div>
-            <span class="example-spacer"></span>
-            <div class="row">
-                <div class="col-6">
-                    <button mat-raised-button class="btn btn-primary" (click)="openLoginMenu()">Login</button>
-                </div>
-            </div>
-        </mat-toolbar>
-    </p>
-</router-outlet>
+        </div>
+    </mat-toolbar>
+</p>
+<router-outlet></router-outlet>

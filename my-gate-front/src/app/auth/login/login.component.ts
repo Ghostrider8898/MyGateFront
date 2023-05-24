@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SignupComponent } from '../signup/signup.component';
+import { Route, Router } from '@angular/router';
+import { UserService } from 'src/app/core/services/user.service';
 
 
 @Component({
@@ -17,7 +19,9 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService : AuthService,
-    private _dialog : MatDialog){}
+    private _dialog : MatDialog,
+    private router: Router,
+    private userService: UserService){}
 
     CloseLoginDialog(){
       this._dialog.closeAll();
@@ -38,10 +42,13 @@ export class LoginComponent {
 
   login(){
      if(this.loginForm.valid){
+      this._dialog.closeAll();
+      this.userService.setUser(this.loginForm.value);
       this.authService.login(this.loginForm.value)
       .subscribe({
         next: (Response: any) => {
           console.log(Response);
+          this.router.navigate(["/portal"])
         },
         error: (Error : any) => {
           console.log(HttpErrorResponse);

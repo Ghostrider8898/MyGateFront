@@ -17,13 +17,19 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { PortalComponent } from './portal/portal.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    PortalComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatRadioModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatCheckboxModule
   ],
   providers: [ AuthService],
   bootstrap: [AppComponent]
