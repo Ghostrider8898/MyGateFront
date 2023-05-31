@@ -82,8 +82,7 @@
               <mat-label><b>Register as a ?</b></mat-label>
               <mat-radio-button value="flatowner" (change)="radioButtonChanged($event.value);">FLat Owner</mat-radio-button>
               <mat-radio-button value="staff" (change)="radioButtonChanged($event.value);">Staff</mat-radio-button>
-              <mat-radio-button value="regularvisitor" (change)="radioButtonChanged($event.value);">Regular Visitor</mat-radio-button>
-              <mat-radio-button value="irregularvisitor" (change)="radioButtonChanged($event.value);">Irregular Visitor</mat-radio-button>
+              <mat-radio-button value="visitor" (change)="radioButtonChanged($event.value);"> Visitor</mat-radio-button>
             </mat-radio-group>
           </div>
         </div>
@@ -137,7 +136,7 @@
             </mat-radio-group>
           </div>
         </div>
-        <div class="row m-2" *ngIf="isGeneratePass">
+        <div class="row m-2" *ngIf="isVisitor">
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>In Time</mat-label>
@@ -155,6 +154,38 @@
             <mat-error *ngIf="signUpForm.controls['outTime'].dirty">
               Out Time is <strong>required</strong>
             </mat-error>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Vehicle Number</mat-label>
+              <input type="text" matInput formControlName="vehicleNo" placeholder="Ex. MH12HJ5467">
+            </mat-form-field>
+            <mat-error *ngIf="signUpForm.controls['vehicleNo'].dirty">
+              Vehicle No is <strong>required</strong>
+            </mat-error>
+          </div>
+        </div>
+        <div class="row m-2" *ngIf="isGeneratePass">
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Expiry Date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="expiryDate" placeholder="Ex. 08/08/1998">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+                *ngIf="signUpForm.controls['expiryDate'].dirty">
+                Expiry Date is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Flat No.</mat-label>
+              <input type="text" matInput formControlName="flatNoForPass" placeholder="Ex. A-102">
+              <mat-error *ngIf="signUpForm.controls['flatNoForPass'].dirty">
+                Flat No. is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
           </div>
         </div>
         <div class="row m-2">

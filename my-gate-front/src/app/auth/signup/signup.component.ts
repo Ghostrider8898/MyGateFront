@@ -61,7 +61,10 @@ export class SignupComponent {
       flatNumberforStaff : [''],
       staffShift : [''],
       inTime : [''],
-      outTime : ['']
+      outTime : [''],
+      vehicleNo: [''],
+      expiryDate:[''],
+      flatNoForPass:['']
     })
   }
 
@@ -107,7 +110,7 @@ export class SignupComponent {
       this.isVisitor = false;
       this.isGeneratePass = false;
     }
-    else if( value === 'regularvisitor'){
+    else if( value === 'visitor'){
       this.isStaff = false;
       this.isFlatOwner = false;
       this.isVisitor = true;
