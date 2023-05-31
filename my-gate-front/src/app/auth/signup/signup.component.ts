@@ -1,4 +1,5 @@
 import { Dialog } from '@angular/cdk/dialog';
+import { Time } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,6 +15,7 @@ export class SignupComponent {
   signUpForm!: FormGroup;
   isFlatOwner : boolean = false;
   isStaff : boolean = false;
+  isVisitor : boolean = false;
   flatNumbersList : any = [
       {
         id : 'A-101',
@@ -28,6 +30,8 @@ export class SignupComponent {
         value : 'A-103'
       }
   ]
+  DefaultTime : string = new Date().toString().split(' ')[4];
+  isGeneratePass: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,7 +52,16 @@ export class SignupComponent {
       password: ['', Validators.required],
       phoneNumber : ['',[Validators.required, Validators.maxLength(10)]],
       dateOfBirth : ['', Validators.required],
-      ardharCard : ['', [Validators.required, Validators.maxLength(10)]]
+      ardharCard : ['', [Validators.required, Validators.maxLength(10)]],
+      gender : ['', Validators.required],
+      userType : ['', Validators.required],
+      flatNumber : [''],
+      sCitizens : [''],
+      pets : [''],
+      flatNumberforStaff : [''],
+      staffShift : [''],
+      inTime : [''],
+      outTime : ['']
     })
   }
 
@@ -85,15 +98,33 @@ export class SignupComponent {
     if(value === 'flatowner'){
       this.isFlatOwner = true;
       this.isStaff = false;
+      this.isVisitor = false;
+      this.isGeneratePass = false;
     }
     else if( value === 'staff'){
       this.isStaff = true;
       this.isFlatOwner = false;
+      this.isVisitor = false;
+      this.isGeneratePass = false;
+    }
+    else if( value === 'regularvisitor'){
+      this.isStaff = false;
+      this.isFlatOwner = false;
+      this.isVisitor = true;
+      this.isGeneratePass = false;
     }
     else{
       this.isFlatOwner = false;
       this.isStaff = false;
-    }
-    console.log(" Value is : ", value );
+      this.isVisitor = false;
+      this.isGeneratePass = false;
+    }    
  }
+
+ generatePass(value : any){
+  if(value === 'yes')
+    this.isGeneratePass = true;
+  else
+    this.isGeneratePass = false;
+}
 }

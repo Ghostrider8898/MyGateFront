@@ -68,7 +68,7 @@
         </div>
         <div class="row m-2">
           <div class="col-12">
-            <mat-radio-group aria-label="Gender">
+            <mat-radio-group formControlName="gender" aria-label="Gender">
               <mat-label><b>Gender</b></mat-label>
               <mat-radio-button value="male">Male</mat-radio-button>
               <mat-radio-button value="female">Female</mat-radio-button>
@@ -78,7 +78,7 @@
         </div>      
         <div class="row m-2">
           <div class="col-12">
-            <mat-radio-group aria-label="Gender">
+            <mat-radio-group formControlName="userType">
               <mat-label><b>Register as a ?</b></mat-label>
               <mat-radio-button value="flatowner" (change)="radioButtonChanged($event.value);">FLat Owner</mat-radio-button>
               <mat-radio-button value="staff" (change)="radioButtonChanged($event.value);">Staff</mat-radio-button>
@@ -91,28 +91,22 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Flat Number</mat-label>
-              <input type="text" matInput formControlName="username" placeholder="Ex. john123">
-              <mat-error *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')">
-                Username is <strong>required</strong>
+              <input type="text" matInput formControlName="flatNumber" placeholder="Ex. john123">
+              <mat-error *ngIf="signUpForm.controls['flatNumber'].dirty">
+                Flat Number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Number of Senior Citizens</mat-label>
-              <input type="number" matInput formControlName="username" placeholder="Ex. john123">
-              <mat-error *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')">
-                Username is <strong>required</strong>
-              </mat-error>
+              <input type="number" matInput formControlName="sCitizens" placeholder="Ex. john123">
             </mat-form-field>
           </div>
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Number of pets</mat-label>
-              <input type="number" matInput formControlName="username" placeholder="Ex. john123">
-              <mat-error *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')">
-                Username is <strong>required</strong>
-              </mat-error>
+              <input type="number" matInput formControlName="pets" placeholder="Ex. john123">
             </mat-form-field>
           </div>
         </div>
@@ -120,11 +114,47 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Flat Number</mat-label>
-              <input type="text" matInput formControlName="username" placeholder="Ex. john123">
-              <mat-error *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')">
-                Username is <strong>required</strong>
+              <input type="text" matInput formControlName="flatNumberforStaff" placeholder="Ex. john123">
+              <mat-error *ngIf="signUpForm.controls['flatNumberforStaff'].dirty">
+                Flat Number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-radio-group formControlName="staffShift" aria-label="Shift">
+              <mat-label><b>Shift ?</b></mat-label>
+              <mat-radio-button value="day">Day</mat-radio-button>
+              <mat-radio-button value="night">Night</mat-radio-button>              
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="row m-2" *ngIf="isVisitor">
+          <div class="col-12">
+            <mat-radio-group>
+              <mat-label><b>Would you like to generate a pass ?</b></mat-label>
+              <mat-radio-button value="yes" (change)="generatePass($event.value);">Yes</mat-radio-button>
+              <mat-radio-button value="no" (change)="generatePass($event.value);">No</mat-radio-button>           
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="row m-2" *ngIf="isGeneratePass">
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>In Time</mat-label>
+              <input type="time" [defaultValue]="DefaultTime" matInput formControlName="inTime" placeholder="Ex. john123">
+            </mat-form-field>
+            <mat-error *ngIf="signUpForm.controls['inTime'].dirty">
+              In Time is <strong>required</strong>
+            </mat-error>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Out Time</mat-label>
+              <input type="time" matInput formControlName="outTime" placeholder="Ex. john123">
+            </mat-form-field>
+            <mat-error *ngIf="signUpForm.controls['outTime'].dirty">
+              Out Time is <strong>required</strong>
+            </mat-error>
           </div>
         </div>
         <div class="row m-2">
