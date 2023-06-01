@@ -52,7 +52,7 @@ export class SignupComponent {
       password: ['', Validators.required],
       phoneNumber : ['',[Validators.required, Validators.maxLength(10)]],
       dateOfBirth : ['', Validators.required],
-      ardharCard : ['', [Validators.required, Validators.maxLength(10)]],
+      aadharCardNo : ['', [Validators.required, Validators.maxLength(10)]],
       gender : ['', Validators.required],
       userType : ['', Validators.required],
       flatNumber : [''],
@@ -64,7 +64,9 @@ export class SignupComponent {
       outTime : [''],
       vehicleNo: [''],
       expiryDate:[''],
-      flatNoForPass:['']
+      flatNoForPass:[''],
+      visitingPurpose:[''],
+      userId:[0]
     })
   }
 
@@ -98,19 +100,19 @@ export class SignupComponent {
   }
 
   radioButtonChanged(value: any){
-    if(value === 'flatowner'){
+    if(value === '2'){
       this.isFlatOwner = true;
       this.isStaff = false;
       this.isVisitor = false;
       this.isGeneratePass = false;
     }
-    else if( value === 'staff'){
+    else if( value === '3'){
       this.isStaff = true;
       this.isFlatOwner = false;
       this.isVisitor = false;
       this.isGeneratePass = false;
     }
-    else if( value === 'visitor'){
+    else if( value === '4'){
       this.isStaff = false;
       this.isFlatOwner = false;
       this.isVisitor = true;

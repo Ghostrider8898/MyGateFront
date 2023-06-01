@@ -36,7 +36,7 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Phone Number</mat-label>
-              <input type="number" matInput formControlName="phoneNumber" placeholder="Ex. 8293029312">
+              <input type="text" matInput formControlName="phoneNumber" placeholder="Ex. 8293029312">
               <mat-error
                 *ngIf="signUpForm.controls['phoneNumber'].dirty && signUpForm.hasError('required', 'phoneNumber')">
                 Email is <strong>required</strong>
@@ -45,11 +45,11 @@
           </div>
           <div class="col-4">
             <mat-form-field appearance="outline">
-              <mat-label>Ardhar Card Number</mat-label>
-              <input type="number" matInput formControlName="ardharCard" placeholder="Ex. 0000000000000">
+              <mat-label>Aadhar Card Number</mat-label>
+              <input type="text" matInput formControlName="aadharCardNo" placeholder="Ex. 0000000000000">
               <mat-error
-                *ngIf="signUpForm.controls['ardharCard'].dirty && signUpForm.hasError('required', 'ardharCard')">
-                Ardhar Card Number is <strong>required</strong>
+                *ngIf="signUpForm.controls['aadharCardNo'].dirty && signUpForm.hasError('required', 'aadharCardNo')">
+                Aadhar Card Number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </div>
@@ -80,9 +80,9 @@
           <div class="col-12">
             <mat-radio-group formControlName="userType">
               <mat-label><b>Register as a ?</b></mat-label>
-              <mat-radio-button value="flatowner" (change)="radioButtonChanged($event.value);">FLat Owner</mat-radio-button>
-              <mat-radio-button value="staff" (change)="radioButtonChanged($event.value);">Staff</mat-radio-button>
-              <mat-radio-button value="visitor" (change)="radioButtonChanged($event.value);"> Visitor</mat-radio-button>
+              <mat-radio-button value="2" (change)="radioButtonChanged($event.value);">FLat Owner</mat-radio-button>
+              <mat-radio-button value="3" (change)="radioButtonChanged($event.value);">Staff</mat-radio-button>
+              <mat-radio-button value="4" (change)="radioButtonChanged($event.value);"> Visitor</mat-radio-button>
             </mat-radio-group>
           </div>
         </div>
@@ -90,7 +90,7 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Flat Number</mat-label>
-              <input type="text" matInput formControlName="flatNumber" placeholder="Ex. john123">
+              <input type="number" matInput formControlName="flatNumber" placeholder="Ex. 54">
               <mat-error *ngIf="signUpForm.controls['flatNumber'].dirty">
                 Flat Number is <strong>required</strong>
               </mat-error>
@@ -99,13 +99,13 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Number of Senior Citizens</mat-label>
-              <input type="number" matInput formControlName="sCitizens" placeholder="Ex. john123">
+              <input type="number" matInput formControlName="sCitizens" placeholder="Ex. 2">
             </mat-form-field>
           </div>
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Number of pets</mat-label>
-              <input type="number" matInput formControlName="pets" placeholder="Ex. john123">
+              <input type="number" matInput formControlName="pets" placeholder="Ex. 2">
             </mat-form-field>
           </div>
         </div>
@@ -113,7 +113,7 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Flat Number</mat-label>
-              <input type="text" matInput formControlName="flatNumberforStaff" placeholder="Ex. john123">
+              <input type="number" matInput formControlName="flatNumberforStaff" placeholder="Ex. john123">
               <mat-error *ngIf="signUpForm.controls['flatNumberforStaff'].dirty">
                 Flat Number is <strong>required</strong>
               </mat-error>
@@ -165,6 +165,17 @@
             </mat-error>
           </div>
         </div>
+        <div class="row m-2" *ngIf="isVisitor" >
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Purpose of Visit</mat-label>
+              <input type="text" matInput formControlName="visitingPurpose" placeholder="Ex. Visiting a relative">
+            </mat-form-field>
+            <mat-error *ngIf="signUpForm.controls['visitingPurpose'].dirty">
+              Visiting Purpose is <strong>required</strong>
+            </mat-error>
+          </div>
+        </div>
         <div class="row m-2" *ngIf="isGeneratePass">
           <div class="col-4">
             <mat-form-field appearance="outline">
@@ -181,7 +192,7 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Flat No.</mat-label>
-              <input type="text" matInput formControlName="flatNoForPass" placeholder="Ex. A-102">
+              <input type="number" matInput formControlName="flatNoForPass" placeholder="Ex. 54">
               <mat-error *ngIf="signUpForm.controls['flatNoForPass'].dirty">
                 Flat No. is <strong>required</strong>
               </mat-error>
@@ -208,20 +219,20 @@
             </mat-form-field>
           </div>
         </div>
+        <div class="m-2 row">
+          <div class="col-12">
+            <input type="submit" class="btn btn-primary" value="SignUp" />
+          </div>
+        </div>
+        <div class="m-2 row">
+          <div class="col-12">
+            <button mat-raised-button (click)="CloseSignUoDialog()" class="btn btn-danger">Cancel</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
 </div>
 <div mat-dialog-actions>
-  <div class="m-2 row">
-    <div class="col-12">
-      <input type="submit" class="btn btn-primary" value="SignUp" />
-    </div>
-  </div>
-  <div class="m-2 row">
-    <div class="col-12">
-      <button mat-raised-button (click)="CloseSignUoDialog()" class="btn btn-danger">Cancel</button>
-    </div>
-  </div>
-
+  
 </div>

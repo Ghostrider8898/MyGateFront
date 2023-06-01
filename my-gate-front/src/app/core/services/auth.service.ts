@@ -18,7 +18,7 @@ export class AuthService {
 
   signup(signup:any): Observable<any> {   
     debugger;
-    const url = envirnoment.BaseUrl + 'Auth/register';
+    const url = envirnoment.BaseUrl + 'Auth/Register';
     return this.httpClient.post<user>(url, signup);
   }
 }
