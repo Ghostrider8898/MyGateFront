@@ -90,7 +90,7 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Flat Number</mat-label>
-              <input type="number" matInput formControlName="flatNumber" placeholder="Ex. 54">
+              <input type="text" matInput formControlName="flatNumber" placeholder="Ex. 54">
               <mat-error *ngIf="signUpForm.controls['flatNumber'].dirty">
                 Flat Number is <strong>required</strong>
               </mat-error>
@@ -99,13 +99,13 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Number of Senior Citizens</mat-label>
-              <input type="number" matInput formControlName="sCitizens" placeholder="Ex. 2">
+              <input type="text" matInput formControlName="sCitizens" placeholder="Ex. 2">
             </mat-form-field>
           </div>
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Number of pets</mat-label>
-              <input type="number" matInput formControlName="pets" placeholder="Ex. 2">
+              <input type="text" matInput formControlName="pets" placeholder="Ex. 2">
             </mat-form-field>
           </div>
         </div>
