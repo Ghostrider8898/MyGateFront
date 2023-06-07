@@ -22,6 +22,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DashboardComponent } from './portal/dashboard/dashboard.component';
+import {MatTableModule} from '@angular/material/table';
+import { FlatownerComponent } from './portal/flatowner/flatowner.component';
+import { SecurityComponent } from './portal/security/security.component';
+import { StaffComponent } from './portal/staff/staff.component';
+import { VisitorComponent } from './portal/visitor/visitor.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AuthComponent,
     LoginComponent,
     SignupComponent,
-    PortalComponent
+    PortalComponent,
+    DashboardComponent,
+    FlatownerComponent,
+    SecurityComponent,
+    StaffComponent,
+    VisitorComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +59,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCardModule,
     MatDividerModule,
     MatProgressBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule
   ],
   providers: [ AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [FlatownerComponent]
 })
 export class AppModule { }

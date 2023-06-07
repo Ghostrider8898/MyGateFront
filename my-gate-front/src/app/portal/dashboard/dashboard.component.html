@@ -1,1 +1,62 @@
-<p>dashboard works!</p>
+<div class="row m-3">
+    <div class="col-3">
+        <mat-card class="card" style="background-color: gold;">
+            <mat-card-header>
+                <mat-card-title>Flat Owners</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mt-5">
+                <p>View All the Flat Owner registerd.</p>
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-raised-button class="btn btn-primary" (click)="NavigateToFlatOwnerList()">View</button>
+                <mat-icon >keyboard_double_arrow_right</mat-icon>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-3">
+        <mat-card class="card" style="background-color:aqua">
+            <mat-card-header>
+                <mat-card-title>Visitors</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mt-5">
+                <p>View All the Visitors registerd.</p>
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-raised-button class="btn btn-primary" (click)="NavigateToVisitorList()">View</button>
+                <mat-icon >keyboard_double_arrow_right</mat-icon>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-3">
+        <mat-card class="card" style="background-color:burlywood">
+            <mat-card-header>
+                <mat-card-title>Security</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mt-5">
+                <p>View All the Security available.</p>
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-raised-button class="btn btn-primary" (click)="NavigateToSecurityList()">View</button>
+                <mat-icon >keyboard_double_arrow_right</mat-icon>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-3">
+        <mat-card class="card" style="background-color:deeppink">
+            <mat-card-header>
+                <mat-card-title>Staff</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="mt-5">
+                <p>View All the Staff registerd.</p>
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-raised-button class="btn btn-primary" (click)="NavigateToStaffList()">View</button>
+                <mat-icon >keyboard_double_arrow_right</mat-icon>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

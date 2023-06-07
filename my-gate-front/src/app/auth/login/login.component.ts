@@ -48,7 +48,7 @@ export class LoginComponent {
       .subscribe({
         next: (Response: any) => {
           console.log(Response);
-          this.router.navigate(["/portal"])
+          this.router.navigate(["/portal/dashboard"])
         },
         error: (Error : any) => {
           console.log(HttpErrorResponse);

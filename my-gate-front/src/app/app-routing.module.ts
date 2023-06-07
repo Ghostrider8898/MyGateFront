@@ -5,6 +5,10 @@ const routes: Routes = [
 {
   path: '',
   loadChildren : () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule)
+},
+{
+  path: 'portal',
+  loadChildren : () => import('./portal/portal-routing.module').then(m => m.PortalRoutingModule)
 }
 ];
 
