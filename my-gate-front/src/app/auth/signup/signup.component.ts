@@ -66,7 +66,8 @@ export class SignupComponent {
       expiryDate:[''],
       flatNoForPass:[''],
       visitingPurpose:[''],
-      userId:[0]
+      userId:[0],
+      flatNoForVisitor:['']
     })
   }
 
@@ -112,7 +113,7 @@ export class SignupComponent {
       this.isVisitor = false;
       this.isGeneratePass = false;
     }
-    else if( value === '4'){
+    else if( value === '5'){
       this.isStaff = false;
       this.isFlatOwner = false;
       this.isVisitor = true;
