@@ -80,7 +80,7 @@
           <div class="col-12">
             <mat-radio-group formControlName="userType">
               <mat-label><b>Register as a ?</b></mat-label>
-              <mat-radio-button value="2" (change)="radioButtonChanged($event.value);">FLat Owner</mat-radio-button>
+              <mat-radio-button value="2" (change)="radioButtonChanged($event.value);">Flat Owner</mat-radio-button>
               <mat-radio-button value="3" (change)="radioButtonChanged($event.value);">Staff</mat-radio-button>
               <mat-radio-button value="5" (change)="radioButtonChanged($event.value);"> Visitor</mat-radio-button>
             </mat-radio-group>
@@ -113,8 +113,8 @@
           <div class="col-4">
             <mat-form-field appearance="outline">
               <mat-label>Flat Number</mat-label>
-              <input type="number" matInput formControlName="flatNoForPass" placeholder="Ex. john123">
-              <mat-error *ngIf="signUpForm.controls['flatNoForPass'].dirty">
+              <input type="text" matInput formControlName="flatNumberforStaff" placeholder="Ex. john123">
+              <mat-error *ngIf="signUpForm.controls['flatNumberforStaff'].dirty">
                 Flat Number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
