@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { PortalService } from 'src/app/core/services/portal.service';
 
 @Component({
   selector: 'app-flatowner',
@@ -6,28 +8,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./flatowner.component.css']
 })
 export class FlatownerComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['fullName', 'email', 'phoneNumber','flatNumber','sCitizens','pets','actions'];
+  dataSource = flatOnwerData;
+
+  constructor(private portalService: PortalService) { }
+
+  ngOnInit() {
+    this.portalService.getFlatOwnerList()
+      .subscribe({
+        next: (Response: any) => {
+          console.log(Response);
+        },
+        error: (Error: any) => {
+          console.log(HttpErrorResponse);
+        }
+      });
+  }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface FlatOnwerElements {
+  fullName: string;
+  email: string,
+  phoneNumber: number;
+  flatNumber: string;
+  sCitizens: number;
+  pets:number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+const flatOnwerData: FlatOnwerElements[] = [
+  { fullName: "Krutika Pardeshi",email:'krutika2519@gmail.com', phoneNumber: 1234567890, flatNumber: 'A-101',sCitizens: 1, pets: 1 },
 ];
 
 

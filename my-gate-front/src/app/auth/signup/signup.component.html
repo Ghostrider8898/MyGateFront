@@ -8,7 +8,7 @@
             <mat-form-field appearance="outline">
               <mat-label>First Name</mat-label>
               <input type="text" matInput formControlName="firstName" placeholder="Ex. John">
-              <mat-error *ngIf="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required', 'firstName')">
+              <mat-error *ngIf="(signUpForm.controls['firstName'].dirty || signUpForm.controls['firstName'].touched) && signUpForm.hasError('required', 'firstName')">
                 First Name is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -17,7 +17,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Last Name</mat-label>
               <input type="text" matInput formControlName="lastName" placeholder="Ex. Eaton">
-              <mat-error *ngIf="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required', 'lastName')">
+              <mat-error *ngIf="(signUpForm.controls['lastName'].dirty || signUpForm.controls['lastName'].touched) && signUpForm.hasError('required', 'lastName')">
                 LastName is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -26,8 +26,11 @@
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
               <input type="email" matInput formControlName="email" placeholder="Ex. john@example.com">
-              <mat-error *ngIf="signUpForm.controls['email'].dirty && signUpForm.hasError('required', 'email')">
+              <mat-error *ngIf="(signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched) && signUpForm.hasError('required', 'email')">
                 Email is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngif="signUpForm.get('email').errors?.email">
+                Email is <strong>invalid</strong>
               </mat-error>
             </mat-form-field>
           </div>
@@ -38,7 +41,7 @@
               <mat-label>Phone Number</mat-label>
               <input type="text" matInput formControlName="phoneNumber" placeholder="Ex. 8293029312">
               <mat-error
-                *ngIf="signUpForm.controls['phoneNumber'].dirty && signUpForm.hasError('required', 'phoneNumber')">
+                *ngIf="(signUpForm.controls['phoneNumber'].dirty || signUpForm.controls['phoneNumber'].touched) && signUpForm.hasError('required', 'phoneNumber')">
                 Email is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -48,7 +51,7 @@
               <mat-label>Aadhar Card Number</mat-label>
               <input type="text" matInput formControlName="aadharCardNo" placeholder="Ex. 0000000000000">
               <mat-error
-                *ngIf="signUpForm.controls['aadharCardNo'].dirty && signUpForm.hasError('required', 'aadharCardNo')">
+                *ngIf="(signUpForm.controls['aadharCardNo'].dirty || signUpForm.controls['aadharCardNo'].touched) && signUpForm.hasError('required', 'aadharCardNo')">
                 Aadhar Card Number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -60,7 +63,7 @@
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
               <mat-error
-                *ngIf="signUpForm.controls['dateOfBirth'].dirty && signUpForm.hasError('required', 'dateOfBirth')">
+                *ngIf="(signUpForm.controls['dateOfBirth'].dirty || signUpForm.controls['dateOfBirth'].touched) && signUpForm.hasError('required', 'dateOfBirth')">
                 Date of Birth is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -74,6 +77,10 @@
               <mat-radio-button value="female">Female</mat-radio-button>
               <mat-radio-button value="others">Others</mat-radio-button>
             </mat-radio-group>
+            <mat-error
+                *ngIf="(signUpForm.controls['gender'].dirty || signUpForm.controls['gender'].touched) && signUpForm.hasError('required', 'gender')">
+                Gender is <strong>required</strong>
+              </mat-error>
           </div>
         </div>      
         <div class="row m-2">
@@ -84,6 +91,10 @@
               <mat-radio-button value="3" (change)="radioButtonChanged($event.value);">Staff</mat-radio-button>
               <mat-radio-button value="5" (change)="radioButtonChanged($event.value);"> Visitor</mat-radio-button>
             </mat-radio-group>
+            <mat-error
+                *ngIf="(signUpForm.controls['userType'].dirty || signUpForm.controls['userType'].touched) && signUpForm.hasError('required', 'userType')">
+                User Type is <strong>required</strong>
+              </mat-error>
           </div>
         </div>
         <div class="row m-2" *ngIf="isFlatOwner">
@@ -91,7 +102,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Flat Number</mat-label>
               <input type="text" matInput formControlName="flatNumber" placeholder="Ex. 54">
-              <mat-error *ngIf="signUpForm.controls['flatNumber'].dirty">
+              <mat-error *ngIf="isFlatOwner && (signUpForm.controls['flatNumber'].dirty || signUpForm.controls['flatNumber'].touched)" >
                 Flat Number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -114,7 +125,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Flat Number</mat-label>
               <input type="text" matInput formControlName="flatNumberforStaff" placeholder="Ex. john123">
-              <mat-error *ngIf="signUpForm.controls['flatNumberforStaff'].dirty">
+              <mat-error *ngIf="isStaff && (signUpForm.controls['flatNumberforStaff'].dirty || signUpForm.controls['flatNumberforStaff'].touched)">
                 Flat Number is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -124,6 +135,7 @@
               <mat-label><b>Shift ?</b></mat-label>
               <mat-radio-button value="day">Day</mat-radio-button>
               <mat-radio-button value="night">Night</mat-radio-button>              
+              <mat-error *ngIf="isStaff && (signUpForm.controls['staffShift'].dirty || signUpForm.controls['staffShift'].touched)"></mat-error>
             </mat-radio-group>
           </div>
         </div>
@@ -142,7 +154,7 @@
               <mat-label>In Time</mat-label>
               <input type="time" [defaultValue]="DefaultTime" matInput formControlName="inTime" placeholder="Ex. john123">
             </mat-form-field>
-            <mat-error *ngIf="signUpForm.controls['inTime'].dirty">
+            <mat-error *ngIf="isVisitor && (signUpForm.controls['inTime'].dirty  || signUpForm.controls['inTime'].touched)">
               In Time is <strong>required</strong>
             </mat-error>
           </div>
@@ -151,7 +163,7 @@
               <mat-label>Out Time</mat-label>
               <input type="time" matInput formControlName="outTime" placeholder="Ex. john123">
             </mat-form-field>
-            <mat-error *ngIf="signUpForm.controls['outTime'].dirty">
+            <mat-error *ngIf="isVisitor && (signUpForm.controls['outTime'].dirty || signUpForm.controls['outTime'].touched)">
               Out Time is <strong>required</strong>
             </mat-error>
           </div>
@@ -160,7 +172,7 @@
               <mat-label>Vehicle Number</mat-label>
               <input type="text" matInput formControlName="vehicleNo" placeholder="Ex. MH12HJ5467">
             </mat-form-field>
-            <mat-error *ngIf="signUpForm.controls['vehicleNo'].dirty">
+            <mat-error *ngIf="isVisitor && (signUpForm.controls['vehicleNo'].dirty || signUpForm.controls['vehicleNo'].touched)">
               Vehicle No is <strong>required</strong>
             </mat-error>
           </div>
@@ -171,7 +183,7 @@
               <mat-label>Purpose of Visit</mat-label>
               <input type="text" matInput formControlName="visitingPurpose" placeholder="Ex. Visiting a relative">
             </mat-form-field>
-            <mat-error *ngIf="signUpForm.controls['visitingPurpose'].dirty">
+            <mat-error *ngIf="isVisitor && (signUpForm.controls['visitingPurpose'].dirty || signUpForm.controls['visitingPurpose'].touched)">
               Visiting Purpose is <strong>required</strong>
             </mat-error>
           </div>
@@ -179,7 +191,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Flat No.</mat-label>
               <input type="text" matInput formControlName="flatNoForVisitor" placeholder="Ex. 54">
-              <mat-error *ngIf="signUpForm.controls['flatNoForVisitor'].dirty">
+              <mat-error *ngIf="isVisitor && (signUpForm.controls['flatNoForVisitor'].dirty|| signUpForm.controls['flatNoForVisitor'].touched)">
                 Flat No. is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -205,7 +217,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Username</mat-label>
               <input type="text" matInput formControlName="username" placeholder="Ex. john123">
-              <mat-error *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required', 'username')">
+              <mat-error *ngIf="(signUpForm.controls['username'].dirty || signUpForm.controls['username'].touched) && signUpForm.hasError('required', 'username')">
                 Username is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -214,7 +226,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
               <input type="password" matInput formControlName="password">
-              <mat-error *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required', 'password')">
+              <mat-error *ngIf="(signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched) && signUpForm.hasError('required', 'password')">
                 Password is <strong>required</strong>
               </mat-error>
             </mat-form-field>

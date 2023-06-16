@@ -24,6 +24,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DashboardComponent } from './portal/dashboard/dashboard.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 import { FlatownerComponent } from './portal/flatowner/flatowner.component';
 import { SecurityComponent } from './portal/security/security.component';
 import { StaffComponent } from './portal/staff/staff.component';
@@ -60,7 +61,8 @@ import { VisitorComponent } from './portal/visitor/visitor.component';
     MatDividerModule,
     MatProgressBarModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule
   ],
   providers: [ AuthService],
   bootstrap: [AppComponent],
